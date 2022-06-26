@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/theme/default.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Serverless Eats</title>
+  </head>
+
+  <body>
+    <div id="app">
+        <md-toolbar class="md-accent" md-elevation="1">
+            <h3 class="md-title" style="flex: 1">{{appName}}</h3>
+        </md-toolbar>
+        <md-content>
+            <md-card>
+                <md-card-header>
+                  <div class="md-title">Restaurants</div>
+                </md-card-header>
+          
+                <md-card-content>
+                    <md-list v-for="rest in restaurants">
+                        <md-list-item @click="selectRest(rest)">
+                            <md-avatar>
+                              <img src="https://placeimg.com/40/40/nature/1">
+                            </md-avatar>
+                    
+                            <div class="md-list-item-text">
+                              <span>{{rest.name}}</span>
+                              <span>{{rest.Cuisine}}</span>
+                            </div>
+                          </md-list-item>
+                    </md-list>
+                </md-card-content>
+              </md-card>
+              <md-card>
+                <md-card-header>
+                  <div class="md-title">Schedule</div>
+                </md-card-header>
+          
+                <md-card-content v-if="typeof selectedRestaurant === 'undefined'">
+                    Please select a resturant.
+                </md-card-content>
+
+                <md-card-content v-if="typeof selectedRestaurant !== 'undefined'">
+
+                  <ul>
+                    <li  v-for="day in schedulesRestSelected.openHours">
+                      {{day.Day}}: {{day.open}} - {{day.close}}
+                    </li>
+                  </ul> 
+                </md-card-content>
+              </md-card>
+              <md-card>
+                <md-card-header>
+                  <div class="md-title">Menu</div>
+                </md-card-header>
+
+                <md-card-content v-if="typeof selectedRestaurant === 'undefined'">
+                    Please select a resturant.
+                </md-card-content>
+                <md-list v-for="product in productsRestSelected">
+                  <md-list-item>
+                      <md-avatar>
+                        <img src="https://placeimg.com/40/40/nature">
+                      </md-avatar>
+              
+                      <div class="md-list-item-text">
+                        <span>{{product.name}}</span>
+                        <span>{{product.description}}</span>
+                        <span>USD {{product.price}}</span>
+                      </div>
+              
+                      <md-button class="md-icon-button md-list-action">
+                        <md-icon class="md-primary">add</md-icon>
+                      </md-button>
+                    </md-list-item>
+              </md-list>
+              </md-card>
+        </md-content>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-material"></script>
+    <script>
+      Vue.use(VueMaterial.default)
+
+      new Vue({
+        el: '#app',
+        data: {
+            appName: "Serverless Eats",
+            restaurants: undefined,
+            products: undefined,
+            productsRestSelected: undefined,
+            schedules: undefined,
+            schedulesRestSelected: undefined,
+            selectedRestaurant: undefined,
+            openOrClose: undefined,
+        },
+        methods: {
+            selectRest: async function (item) {
+                this.selectedRestaurant= item;
+                await axios
+                .get('http://localhost:3000/products/?restId='+item.id)
+                .then(response => (
+                    this.productsRestSelected = response.data
+                ))
+                await axios
+                .get('http://localhost:3000/schedules/?restId='+item.id)
+                .then(response => (
+                  this.schedulesRestSelected = response.data[0]
+                ))
+                var dateObj = new Date()
+                var weekday = dateObj.toLocaleString("default", { weekday: "long" })
+            },
+        },
+        mounted () {
+            axios
+            .get('https://YOUR-FUNCTION-URL')
+            .then(response => (
+                this.restaurants = response.data
+            ))
+        }
+      })
+    </script>
+    <style lang="scss" scoped>
+        .md-card {
+          width: 500px;
+          max-width: 50%;
+          display: inline-block;
+          vertical-align: top;
+          border: 1px solid rgba(#000, .12);
+        }
+        .md-content{
+            display: flex;
+            justify-content: center;
+        }
+      </style>
+  </body>
+</html>

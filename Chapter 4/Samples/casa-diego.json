@@ -1,0 +1,68 @@
+{
+    "restaurant":{
+            "name": "Casa Calvo",
+            "Cuisine": "Latin",
+            "openHours":[
+                {"Day": "Tuesday", "open":"6pm", "close":"11pm"},
+                {"Day": "Wednesday", "open":"6pm", "close":"11pm"},
+                {"Day": "Thursday", "open":"6pm", "close":"11pm"},
+                {"Day": "Friday", "open":"4pm", "close":"11pm"},
+                {"Day": "Saturday", "open":"4pm", "close":"11pm"},
+                {"Day": "Sunday", "open":"4pm", "close":"10pm"}
+
+            ],
+            "menu":[
+                {
+                    "name": "Starters",
+                    "description":"Delicious finger food perfect in combination with some drinks",
+                    "items":[
+                        {
+                            "Name":"Tostones",
+                            "Desciption":"Fried snack from Puerto Rico",
+                            "price": 10.00
+                        },
+                        {
+                            "Name":"Pork Taquitos",
+                            "Desciption":"Taquitos is always a good move",
+                            "price": 10.00
+                        },
+                        {
+                            "Name":"Vegie Taquitos",
+                            "Desciption":"Our famous Taquitos vegetarian style",
+                            "price": 8.00
+                        }
+                    ]
+                },
+                {
+                    "name": "Mains",
+                    "description":"Epic meals that hit the spot just right",
+                    "items":[
+                        {
+                            "Name":"Gallo Pinto",
+                            "Desciption":"Rice, beans, eggs: Mas tico que el gallo pinto!",
+                            "price": 15.00
+                        },{
+                            "Name":"Arroz con Pollo",
+                            "Desciption":"Chicken, fried rice, spices. Is a dinner without Arroz con pollo realy a dinner?",
+                            "price": 16.00
+                        }
+                    ]
+                },
+                {
+                    "name": "Dessert",
+                    "description":"Top it off with our free range desserts",
+                    "items":[
+                        {
+                            "Name":"Flan napolitano",
+                            "Desciption":"Mexican style custard",
+                            "price": 12.00
+                        },{
+                            "Name":"Brigadeiros",
+                            "Desciption":"also known as Brazilian truffles",
+                            "price": 11.00
+                        }
+                    ]
+                }
+            ]
+        }
+    }

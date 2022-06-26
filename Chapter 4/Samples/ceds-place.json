@@ -1,0 +1,67 @@
+{
+    "restaurant":{
+            "name": "Ced's place",
+            "Cuisine": "Belgian",
+            "openHours":[
+                {"Day": "Tuesday", "open":"6pm", "close":"11pm"},
+                {"Day": "Wednesday", "open":"6pm", "close":"11pm"},
+                {"Day": "Thursday", "open":"6pm", "close":"11pm"},
+                {"Day": "Friday", "open":"4pm", "close":"11pm"},
+                {"Day": "Saturday", "open":"4pm", "close":"11pm"},
+                {"Day": "Sunday", "open":"4pm", "close":"10pm"}
+
+            ],
+            "menu":[
+                {
+                    "name": "Starters",
+                    "description":"Delicious finger food perfect in combination with some drinks",
+                    "items":[
+                        {
+                            "Name":"tomate crevette",
+                            "Desciption":"Tomatoes stuffed with north sea shrimp",
+                            "price": 10.00
+                        },
+                        {
+                            "Name":"Asparagus a la Flamande",
+                            "Desciption":"White asparagus and butter topped with mashed egg",
+                            "price": 10.00
+                        }
+                    ]
+                },
+                {
+                    "name": "Mains",
+                    "description":"Epic meals that hit the spot just right",
+                    "items":[
+                        {
+                            "Name":"Mussles & Fries",
+                            "Desciption":"Mussles in white wine sause, say no more!",
+                            "price": 18.00
+                        },{
+                            "Name":"Vol-au-Vent",
+                            "Desciption":"Puff pastry and chicken",
+                            "price": 17.00
+                        },{
+                            "Name":"Belgian Beer Stew",
+                            "Desciption":"Beer, Beef and potatoes. Simple and tasty",
+                            "price": 16.00
+                        }
+                    ]
+                },
+                {
+                    "name": "Dessert",
+                    "description":"Top it off with our free range desserts",
+                    "items":[
+                        {
+                            "Name":"Coupe dame-blanche",
+                            "Desciption":"Vanilla ice topped with Belgian chocolate sause",
+                            "price": 12.00
+                        },{
+                            "Name":"Coupe brésilienne",
+                            "Desciption":"Delicious vanilla ice topped with caramel sause and hazelnut",
+                            "price": 10.00
+                        }
+                    ]
+                }
+            ]
+        }
+    }
